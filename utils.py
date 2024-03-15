@@ -43,7 +43,7 @@ def handle_task_backbone(task_type: str, img: np.array, img_name: str):
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
     if task_type == "detection":
-        model = YOLO("yolov8m.pt")
+        model = YOLO("yolov8n.pt")
         results = model([img])
         filename = output_dir + img_name
         bucket_name = "apprunnerdetections"
@@ -52,7 +52,7 @@ def handle_task_backbone(task_type: str, img: np.array, img_name: str):
         load_to_S3(filename, bucket_name, img_name)
         return True
     elif task_type == "segmentation":
-        model = YOLO("yolov8m-seg.pt")
+        model = YOLO("yolov8n-seg.pt")
         results = model([img])
         filename = output_dir + img_name
         bucket_name = "apprunnersegmentations"
