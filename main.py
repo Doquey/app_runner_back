@@ -24,6 +24,11 @@ app.add_middleware(
 )
 
 
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
+
+
 @app.post("/task/")
 def handle_task(task: TaskRequest):
     bucket_name = "apprunnerimages"
