@@ -30,7 +30,7 @@ async def health_check():
 
 
 @app.post("/task/")
-def handle_task(task: TaskRequest):
+async def handle_task(task: TaskRequest):
     bucket_name = "apprunnerimages"
 
     task_type = task.task
@@ -43,4 +43,6 @@ def handle_task(task: TaskRequest):
         return {"Task Completed Sucessfully"}
     else:
         return HTTPException(status_code=400, detail="Task type not available")
-
+@app.get("/")
+def get_hello():
+    return {"message:Hello World"}
