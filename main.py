@@ -44,6 +44,3 @@ def handle_task(task: TaskRequest):
     else:
         return HTTPException(status_code=400, detail="Task type not available")
 
-
-if __name__ == "__main__":
-    app()
